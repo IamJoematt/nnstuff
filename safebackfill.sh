@@ -32,8 +32,11 @@ do
 
 cd ${NEWZNAB_DIR}/misc/update_scripts
 
-#Run backfill
+#Run backfill, either regular or threaded, take your pick.
+#${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/backfill.php
 ${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/backfill_threaded.php
+
+
 
 #Run update_releases once so we know how many releases we are dealing with.
 ${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_releases.php
