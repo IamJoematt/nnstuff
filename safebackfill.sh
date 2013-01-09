@@ -48,14 +48,14 @@ ${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_releases.php
 
 #Check the number of releases waiting for postproc
 RELEASE_BACKLOG=`mysql -u $MYSQL_USER -h $MYSQL_HOST -p$MYSQL_PASS $MYSQL_DBNAME -s -N -e "select COUNT(*) from releases r left join category c on c.ID = r.categoryID where (r.passwordstatus between -6 and -1) or (r.haspreview = -1 and c.disablepreview = 0)"`
-LOOPCOUNTER = 0
+LOOPCOUNTER="0"
 
 while [ $RELEASE_BACKLOG -gt 10 ]; do 
 ${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_releases.php
 
 RELEASE_BACKLOG=`mysql -u $MYSQL_USER -h $MYSQL_HOST -p$MYSQL_PASS $MYSQL_DBNAME -s -N -e "select COUNT(*) from releases r left join category c on c.ID = r.categoryID where (r.passwordstatus between -6 and -1) or (r.haspreview = -1 and c.disablepreview = 0)"`
-LOOPCOUNTER = $LOOPCOUNTER + 1
-if [ "$LOOPCOUNTER" -gt "$BINARIES_KEEPUP" ]
+LOOPCOUNTER=`expr $LOOPCOUNTER + 1`
+if [ $LOOPCOUNTER -gt $BINARIES_KEEPUP ]
 then
 
 #Update binaries and process releases every time update_releases loops the number of times defined in BINARIES_KEEPUP
@@ -64,7 +64,7 @@ then
 #${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_binaries.php
 ${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_binaries_threaded.php
 ${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_releases.php
-LOOPCOUNTER = 0
+LOOPCOUNTER="0"
 
 fi
 
