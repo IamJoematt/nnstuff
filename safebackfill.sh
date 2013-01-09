@@ -64,7 +64,7 @@ then
 #${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_binaries.php
 ${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_binaries_threaded.php
 ${PHP_PATH} ${NEWZNAB_DIR}/misc/update_scripts/update_releases.php
-LOOPCOUNTER=0
+LOOPCOUNTER = 0
 
 fi
 
