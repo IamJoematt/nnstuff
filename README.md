@@ -32,7 +32,7 @@
    Nope, it will keep running so you don't fall behind on current releases until you notice your backfilling is finished and switch back to your regular screen script.
 
 
-* **How do I know when the script is done?**\
+* **How do I know when the script is done?**
    You'll need to keep an eye on your active groups in Admin/View Groups to see what the "Backfill Days" value is.  Once they're at the number of days you set in BACKFILL_DAYS, you're done!
    
    
