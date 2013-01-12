@@ -10,8 +10,10 @@
 
 
 
-# Usage
+## Usage
 
 * First edit the paths for PHP and Newznab, set the number of days to backfill, enter your MySQL information, and number of update_releases loops to allow before running update_binaries again.
 
 * Then simply run the script.
+
+**This script is intended to be run instead of your usual screen script until you've reached the desired level of backfill**
